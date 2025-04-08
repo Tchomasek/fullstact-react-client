@@ -11,9 +11,11 @@ function CreatePost() {
   };
 
   const onSubmit = (data: Post) => {
-    axios.post("http://localhost:3001/posts", data).then((response) => {
-      console.log(response.data);
-    });
+    axios
+      .post("https://tom-backend-fa61ad019cb5.herokuapp.com/posts", data)
+      .then((response) => {
+        console.log(response.data);
+      });
   };
 
   const validationSchema = Yup.object().shape({

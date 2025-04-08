@@ -11,9 +11,11 @@ function Home() {
   const [listOfPosts, setListOfPosts] = useState<Post[]>([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/posts").then((response) => {
-      setListOfPosts(response.data);
-    });
+    axios
+      .get("https://tom-backend-fa61ad019cb5.herokuapp.com/posts")
+      .then((response) => {
+        setListOfPosts(response.data);
+      });
   }, []);
   return (
     <div>

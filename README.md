@@ -1,1 +1,1 @@
-Deployed on momentum-daily.netlify.app
+Deployed on https://momentum-daily.netlify.app/

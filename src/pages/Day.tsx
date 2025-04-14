@@ -19,7 +19,7 @@ function Day() {
       });
       setListOfCompletions(listOfCompletedTasks);
     });
-  }, []);
+  }, [id]);
 
   const taskClick = (task: TaskType, completed: boolean) => {
     const completion = {

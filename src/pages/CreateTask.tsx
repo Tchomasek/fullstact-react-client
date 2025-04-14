@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { TaskType } from "../types";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../api_url";
 
 function CreateTask() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ function CreateTask() {
   };
 
   const onSubmit = (data: TaskType) => {
-    axios.post("http://localhost:3001/tasks", data).then(() => {
+    axios.post(`${API_URL}/tasks`, data).then(() => {
       navigate("/");
     });
   };

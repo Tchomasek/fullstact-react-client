@@ -1,8 +1,13 @@
 export type TaskType = {
+  id?: number;
   title: string;
+  createdAt?: string;
+  notRelevant?: boolean;
 };
 
-export type CommentType = {
-  commentBody: string;
-  postId: string;
+export type CompletionType = {
+  id?: number;
+  date: string;
+  task: string;
+  createdAt?: string;
 };

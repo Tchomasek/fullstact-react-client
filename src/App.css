@@ -217,17 +217,6 @@ button {
   border: 2px solid dodgerblue;
 }
 
-.day {
-  width: 100px;
-  height: 100px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 5px;
-  background-color: lightgray;
-}
-
 .calendar {
   display: flex;
   flex-direction: row;

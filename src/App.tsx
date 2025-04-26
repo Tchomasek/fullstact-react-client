@@ -1,8 +1,8 @@
 import "./App.css";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import CreateTask from "./pages/CreateTask";
-import Day from "./pages/Day";
+import Day from "./pages/Day/Day";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/createtask" element={<CreateTask />} />
-          <Route path="/day/:id" element={<Day />} />
+          <Route path="/day/:date" element={<Day />} />
         </Routes>
       </BrowserRouter>
     </div>

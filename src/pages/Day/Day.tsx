@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { API_URL } from "../../api_url";
 import "./Day.scss";
@@ -30,14 +30,17 @@ function Day() {
     });
   }, [date]);
 
-  const isTaskInCompletions = (task: TaskType) => {
-    for (let completion of listOfCompletions) {
-      if (completion.task === task.title) {
-        return true;
+  const cachedIsTaskInCompletions = useCallback(
+    (task: TaskType) => {
+      for (let completion of listOfCompletions) {
+        if (completion.task === task.title) {
+          return true;
+        }
       }
-    }
-    return false;
-  };
+      return false;
+    },
+    [listOfCompletions]
+  );
 
   useEffect(() => {
     if (date) {
@@ -59,13 +62,19 @@ function Day() {
 
     // check if all tasks are in completions
     for (let task of listOfTasks) {
-      if (!isTaskInCompletions(task)) {
+      if (!cachedIsTaskInCompletions(task)) {
         setDayCompleted(false);
         return;
       }
       setDayCompleted(true);
     }
-  }, [listOfCompletions, listOfTasks, date, dayCompleted]);
+  }, [
+    listOfCompletions,
+    listOfTasks,
+    date,
+    dayCompleted,
+    cachedIsTaskInCompletions,
+  ]);
 
   useEffect(() => {
     const completion = {
@@ -108,7 +117,7 @@ function Day() {
       <h1 className="day-title">{date}</h1>
       <div className="day-tasks">
         {listOfTasks.map((task: TaskType, index: number) => {
-          const completed = isTaskInCompletions(task);
+          const completed = cachedIsTaskInCompletions(task);
           return (
             <div
               className={
